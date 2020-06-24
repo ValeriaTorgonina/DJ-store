@@ -1,3 +1,6 @@
+body {
+    font-family: 'Montserrat', Arial, sans-serif;;
+}
 
 ul {
     list-style: none;
@@ -27,3 +30,14 @@ img {
 h1, h2, h3, h4, p {
     margin: 0;
 }
+
+.blue-btn {
+    width: 100%;
+    padding: 10px 15px;
+    font-weight: 500;
+    font-size: 16px;
+    background: $blue;
+    color: white;
+    border-radius: 6px;
+}
+
