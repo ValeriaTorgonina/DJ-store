@@ -1,0 +1,9 @@
+.main-title {
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-size: 52px;
+
+    @media(max-width: 768px) {
+        font-size: 30px;
+    }
+}

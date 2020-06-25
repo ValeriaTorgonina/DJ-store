@@ -82,4 +82,14 @@ document.addEventListener("DOMContentLoaded", function() {
         ...document.querySelectorAll('.cross-btn'),
         form.formSuccess.querySelector('.blue-btn')
     ]);
+
+    const introSlider = new Swiper ('.intro-slider', {
+        slidesPerView: 2,
+        speed: 500,
+        navigation: {
+            nextEl: '#intro-next',
+            prevEl: '#intro-prev',
+        },
+        // loop: true,
+    });
 });

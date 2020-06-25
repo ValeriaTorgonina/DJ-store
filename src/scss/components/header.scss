@@ -5,6 +5,7 @@
     width: 100%;
     background: $lightblue;
     padding: 20px 0;
+    z-index: 5;
 
     .mobil {
         display: none;
@@ -31,6 +32,7 @@
         width: 100%;
         height: 100%;
         stroke: $black;
+        stroke-width: 2px;
         stroke-linecap: round;
 
         &--cross {
@@ -62,6 +64,14 @@
 
         .no-mobil {
             display: none;
+        }
+    }
+
+    
+    @media(max-width: 480px) {
+        &__menu-btn {
+            width: 30px;
+            height: 30px;
         }
     }
 }

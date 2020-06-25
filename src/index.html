@@ -83,7 +83,65 @@
                 </nav>  
             </div>
         </header>
-        <div class="popup">
+        <section class="intro">
+            <div class="container">
+                <div class="intro__content">
+                    <span class="intro__desc">Оснащение конференц-залов</span>
+                    <h2 class="main-title">Видео конференции</h2>
+                    <p class="intro__text">
+                        Профессиональное оборудование для конференц-залов 
+                        предназначено для проведения и организации презентаций, 
+                        совещаний, бизнес-тренингов и онлайн-трансляции контента.
+                    </p>
+                    <div class="intro__btn-inner">
+                        <button class="transparent-btn">Обратный звонок</button>
+                        <button class="blue-btn">Заполнить бриф</button>
+                    </div>
+                </div>
+            </div>
+            <section class="intro-slider">
+                <div class="swiper-wrapper">
+                    <div class="intro-slider__item swiper-slide">
+                        <span class="intro-slider__number">01</span>
+                        <p class="intro-slider__text">
+                            Простота использования оснащения позволяет 
+                            решать функциональные и организационные задачи, 
+                            оптимизировать работу, проводить мероприятия различного масштаба.
+                        </p>
+                    </div>
+                    <div class="intro-slider__item swiper-slide">
+                        <span class="intro-slider__number">02</span>
+                        <p class="intro-slider__text">
+                            Применение инновационных решений для демонстрации культурных 
+                            и исторических реликвий – актуальная тенденция, которая успешно 
+                            применяется в музеях и на площадках альтернативного искусства.
+                        </p>
+                    </div>
+                    <div class="intro-slider__item swiper-slide">
+                        <span class="intro-slider__number">03</span>
+                        <p class="intro-slider__text">
+                            Простота использования оснащения позволяет 
+                            решать функциональные и организационные задачи, 
+                            оптимизировать работу, проводить мероприятия различного масштаба.
+                        </p>
+                    </div>
+                    <div class="intro-slider__item swiper-slide">
+                        <span class="intro-slider__number">04</span>
+                        <p class="intro-slider__text">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            Eius iste molestiae debitis! Harum vel possimus rem magnam 
+                            magni pariatur assumenda, ipsam consequatur ex quibusdam similique.
+                        </p>
+                    </div>
+                    <div class="intro-slider__item swiper-slide"></div>
+                </div>
+                <div class="intro-slider__btns-inner">
+                    <button class="swiper-button-prev prev-btn" id="intro-prev"></button>
+                    <button class="swiper-button-next next-btn" id="intro-next"></button>
+                </div>
+            </section>
+        </section>
+        <div class="popup" hidden>
             <form class="form" action="#" method="POST">
                 <span class="form__title">Готовы обсудить проект?</span>
                 <span class="form__desc">Заполните форму ниже, и мы свяжемся с вами.</span>
@@ -116,7 +174,7 @@
             <button class="cross-btn" title="закрыть"></button>
         </div>
 
-        <div class="overlay"></div>
+        <div class="overlay" hidden></div>
     </div>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js"></script>

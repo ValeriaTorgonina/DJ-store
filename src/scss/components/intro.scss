@@ -1,0 +1,77 @@
+.intro {
+    position: relative;
+    height: 100vh;
+    background: $lightblue url('../../assets/img/intro-bg.jpg') 50% 50% no-repeat;
+    background-size: cover;
+    overflow: hidden;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+        max-width: 600px;
+        color: white;
+    }
+
+    &__desc {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: 400;
+        font-size: 18px;
+        color: $lightgray;
+    }
+
+    &__text {
+        margin-bottom: 55px;
+        font-weight: 400;
+        font-size: 16px;
+        color: $lightgray;
+        line-height: 24px;
+        opacity: 0.8;
+    }
+
+    .blue-btn,
+    .transparent-btn { 
+        max-width: 190px;
+    }
+
+    .transparent-btn {
+        margin-right: 25px;
+    }
+
+    @media(max-width: 768px) {
+        &__desc {
+            font-size: 14px;
+        }
+
+        &__text {
+            font-size: 14px;
+            line-height: 21px;
+            max-width: 500px;
+        }
+
+        .blue-btn,
+        .transparent-btn { 
+            max-width: 160px;
+        }
+
+        .transparent-btn {
+            margin-right: 15px;
+        }
+    }
+
+    @media(max-width: 480px) {
+        padding-top: 40px;
+        
+        &__text {
+            margin-bottom: 30px;
+        }
+
+        .blue-btn,
+        .transparent-btn { 
+            margin-bottom: 20px;
+            max-width: 140px;
+        }
+    }
+}

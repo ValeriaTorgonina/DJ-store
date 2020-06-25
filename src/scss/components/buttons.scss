@@ -1,4 +1,5 @@
-.blue-btn {
+.blue-btn,
+.transparent-btn {
     width: 100%;
     padding: 15px;
     font-weight: 500;
@@ -16,6 +17,16 @@
     &:active {
         transform: scale(0.9);
     }
+
+    @media(max-width: 768px) {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+.transparent-btn {
+    background: none;
+    border: 1px solid white;
 }
 
 .cross-btn {
@@ -68,5 +79,37 @@
         &:after {
             transform: translate(-50%, -50%) rotate(-45deg) scale(0.8);
         }
+    }
+}
+
+.swiper-button-prev.prev-btn,
+.swiper-button-next.next-btn {
+    position: static;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-right: 40px;
+    background: $blue;
+    color: white;
+    border-radius: 50%;
+    opacity: 1;
+
+    &:before,
+    &:after {
+        margin-left: 3px;
+        font-size: medium;
+    }
+
+    &.swiper-button-disabled {
+        background: rgba(186, 209, 255, 0.3);
+    }
+}
+
+.swiper-button-prev.prev-btn {
+    &:before,
+    &:after {
+        margin: 0;
+        margin-right: 3px;
+        font-size: medium;
     }
 }
