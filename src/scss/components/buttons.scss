@@ -1,0 +1,72 @@
+.blue-btn {
+    width: 100%;
+    padding: 15px;
+    font-weight: 500;
+    font-size: 16px;
+    background: $blue;
+    color: white;
+    border-radius: 6px;
+
+    &:hover {
+        @media (hover: hover), (pointer: fine) {
+            filter: brightness(0.9);
+        }
+    }
+
+    &:active {
+        transform: scale(0.9);
+    }
+}
+
+.cross-btn {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    width: 48px;
+    height: 48px;
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 25px;
+        height: 2px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        background: $darkgray;
+        border-radius: 1px;
+    }
+
+    &:after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    &:hover {
+        @media (hover: hover), (pointer: fine) {
+            &:before,
+            &:after {
+                background: $blue;
+            }
+        }
+    }
+
+    &:active {
+        transform: scale(0.9);
+    }
+
+    @media (max-width: 768px) {
+        right: 0;
+
+        &:before,
+        &:after {
+            height: 1px;
+            transform: translate(-50%, -50%) rotate(45deg) scale(0.8);
+        }
+
+        &:after {
+            transform: translate(-50%, -50%) rotate(-45deg) scale(0.8);
+        }
+    }
+}

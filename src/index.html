@@ -83,6 +83,40 @@
                 </nav>  
             </div>
         </header>
+        <div class="popup">
+            <form class="form" action="#" method="POST">
+                <span class="form__title">Готовы обсудить проект?</span>
+                <span class="form__desc">Заполните форму ниже, и мы свяжемся с вами.</span>
+                <input class="input" type="text" required placeholder="Имя*">
+                <input class="input" type="tel" required placeholder="Телефон*">
+                <label class="checkbox">
+                    <input class="checkbox__input" required type="checkbox">
+                    <span class="checkbox__checkmark">
+                        <svg class="checkbox__checkmark-icon">
+                            <use xlink:href="assets/img/sprite.svg#check"></use>
+                        </svg>
+                    </span>
+                    Я согласен с условиями обработки
+                    <a href="#" class="checkbox__link">персональных данных</a>
+                </label>
+                <button class="blue-btn" type="submit" title="отправить">Отправить</button>
+            </form>
+            <section class="form-success" hidden>
+                <div class="form-success__decor">
+                    <svg class="form-success__decor-icon">
+                        <use xlink:href="assets/img/sprite.svg#check"></use>
+                    </svg>
+                </div>
+                <p class="form-success__text">
+                    Ваша заявка успешно отправлена.<br>
+                    Ожидайте звонка в ближайшее время!
+                </p>
+                <button class="blue-btn" title="ок">Ок</button>
+            </section>
+            <button class="cross-btn" title="закрыть"></button>
+        </div>
+
+        <div class="overlay"></div>
     </div>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js"></script>

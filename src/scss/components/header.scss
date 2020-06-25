@@ -36,9 +36,11 @@
         &--cross {
             display: none;
         }
-
+        
         &:hover {
-            stroke: $blue;
+            @media (hover: hover), (pointer: fine) {
+                stroke: $blue;
+            }
         }
 
         &:active {
