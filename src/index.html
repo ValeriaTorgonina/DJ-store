@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/style.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
     <title>DJ store</title>
 </head>
@@ -94,9 +93,17 @@
                         совещаний, бизнес-тренингов и онлайн-трансляции контента.
                     </p>
                     <div class="intro__btn-inner">
-                        <button class="transparent-btn">Обратный звонок</button>
+                        <button class="transparent-btn callback-btn" data-name="callback">Обратный звонок</button>
                         <button class="blue-btn">Заполнить бриф</button>
                     </div>
+                </div>
+            </div>
+            <div class="img-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide img-slider__item img-slider__item--1"></div>
+                    <div class="swiper-slide img-slider__item img-slider__item--2"></div>
+                    <div class="swiper-slide img-slider__item img-slider__item--3"></div>
+                    <div class="swiper-slide img-slider__item img-slider__item--4"></div>
                 </div>
             </div>
             <section class="intro-slider">
@@ -141,7 +148,84 @@
                 </div>
             </section>
         </section>
-        <div class="popup" hidden>
+        <section class="examples">
+            <div class="examples__inner">
+                <img class="examples__img" src="assets/img/examples-img-1.jpg" width="100%" height="100%" alt="electro-voice">
+            </div>
+            <div class="examples__inner examples__inner--right">
+                <img class="examples__img" src="assets/img/examples-img-2.jpg" width="100%" height="100%" alt="electro-voice">
+                <div class="examples__item-container">
+                    <div class="examples__item">
+                        <img class="examples__item-img" src="assets/img/electro-voice-1.png" width="100%" height="100%" alt="левая колонка">
+                        <button class="circle-btn" data-name="electro-voice-left">
+                            <svg class="circle-btn__icon">
+                                <use xlink:href="assets/img/sprite.svg#plus"></use>
+                            </svg>
+                        </button>
+                        <div class="popup popup--tip" id="electro-voice-left" hidden>
+                            <section class="tip">
+                                <h3 class="tip__title">Electro-Voice<br> EVID 4.2</h3>
+                                <ul class="tip__list">
+                                    <li class="tip__item">
+                                        Очень мягкое звучание.
+                                    </li>
+                                    <li class="tip__item">
+                                        Чувствительность — 89 дБ.
+                                    </li>
+                                    <li class="tip__item">
+                                        Пиковая мощность — 400 Вт.
+                                    </li>
+                                    <li class="tip__item">
+                                        Степень влагозащищенности IP34.
+                                    </li>
+                                </ul>
+                                <div class="tip__decor">
+                                    <svg class="tip__decor-icon">
+                                        <use xlink:href="assets/img/sprite.svg#speaker"></use>
+                                    </svg>
+                                </div>
+                                <button class="cross-btn"></button>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="examples__item examples__item--right">
+                        <img class="examples__item-img" src="assets/img/electro-voice-2.png" width="100%" height="100%" alt="правая колонка">
+                        <button class="circle-btn" data-name="electro-voice-right">
+                            <svg class="circle-btn__icon">
+                                <use xlink:href="assets/img/sprite.svg#plus"></use>
+                            </svg>
+                        </button>
+                        <div class="popup popup--tip" id="electro-voice-right" hidden>
+                            <section class="tip">
+                                <h3 class="tip__title">Electro-Voice<br> EVID 4.2</h3>
+                                <ul class="tip__list">
+                                    <li class="tip__item">
+                                        Очень мягкое звучание.
+                                    </li>
+                                    <li class="tip__item">
+                                        Чувствительность — 89 дБ.
+                                    </li>
+                                    <li class="tip__item">
+                                        Пиковая мощность — 400 Вт.
+                                    </li>
+                                    <li class="tip__item">
+                                        Степень влагозащищенности IP34.
+                                    </li>
+                                </ul>
+                                <div class="tip__decor">
+                                    <svg class="tip__decor-icon">
+                                        <use xlink:href="assets/img/sprite.svg#speaker"></use>
+                                    </svg>
+                                </div>
+                                <button class="cross-btn"></button>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <div class="popup" hidden id="callback">
             <form class="form" action="#" method="POST">
                 <span class="form__title">Готовы обсудить проект?</span>
                 <span class="form__desc">Заполните форму ниже, и мы свяжемся с вами.</span>
@@ -177,13 +261,7 @@
         <div class="overlay" hidden></div>
     </div>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js"></script>
-
     <script type="text/javascript" src="https://unpkg.com/swiper/js/swiper.min.js"></script>
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.11.0/rellax.min.js"></script>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script src="js/main.js"></script>
 </body>

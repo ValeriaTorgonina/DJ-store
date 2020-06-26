@@ -1,0 +1,142 @@
+.examples {
+    display: flex;
+    background: $lightblue;
+
+    &__inner {
+        position: relative;
+        width: 50%;
+        height: auto;
+    }
+
+    &__item {
+        position: absolute;
+        top: 10%;
+        left: 15%;
+        width: 50px;
+        height: 65px;
+
+        .circle-btn {
+            position: absolute;
+            bottom: -12px;
+            left: -11px;
+        }
+
+        .popup--tip {
+            top: 30px;
+            left: 50%;
+            transform: translate(-50%, -100%);
+        }
+
+        &--right {
+            right: 22%;
+            left: auto;
+
+            .circle-btn {
+                left: auto;
+                right: -11px;
+            }
+        }
+    }
+
+    &__item-img {
+        object-fit: contain;
+    }
+
+    @media(max-width: 1200px) {
+        &__item {
+            width: 20px;
+            height: 25px;
+            left: 18%;
+
+            .circle-btn {
+                bottom: -8px;
+                left: -10px;
+            }
+    
+            .popup--tip {
+                top: 0px;
+                left: 75px;
+                transform: translate(-100%, -100%);
+
+                &:before {
+                    left: auto;
+                    right: 50px;
+                }
+            }
+    
+            &--right {
+                right: 25%;
+                left: auto;
+    
+                .circle-btn {
+                    left: auto;
+                    right: -10px;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .popup--tip {
+            top: 0px;
+            left: 55px;
+            transform: translate(-100%, -100%);
+
+            &:before {
+                right: 30px;
+            }
+        }
+    }
+
+    @media (max-width: 480px) {
+        &__item-container {
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        &__item {
+            position: static;
+
+            &:first-of-type {
+                margin-right: 30px;
+            }
+
+            .circle-btn {
+                bottom: auto;
+                top: -6px;
+                left: 6vw;
+            }
+
+            .popup--tip {
+                top: 0px;
+                left: auto;
+                right: 13px;
+                transform: translate(0%, -100%);
+    
+                &:before {
+                    right: 30vw;
+                }
+            }
+
+            &--right {
+                right: 25%;
+                left: auto;
+    
+                .circle-btn {
+                    left: auto;
+                    right: 6vw;
+                }
+
+                .popup--tip {
+        
+                    &:before {
+                        right: 5vw;
+                    }
+                }
+            }
+        }
+    }
+}

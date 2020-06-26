@@ -8,20 +8,102 @@
     background: white;
     border-radius: 16px;
     z-index: 6;
+    opacity: 0;
+    transition: 0.5s;
+    animation: show-popup 0.5s;
 
+    &--tip {
+        position: absolute;
+        max-width: 330px;
+        padding: 15px 25px;
+        border-radius: 10px;
+
+        &:before {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            left: 50%;
+            bottom: -5px;
+            background: white;
+            border-radius: 2px;
+            transform: translate(-50%,0) rotate(51deg) skew(14deg);
+        }
+
+        .cross-btn {
+            width: 40px;
+            height: 40px;
+            right: 4px;
+            &:before,
+            &:after {
+                width: 20px;
+            }
+        }
+    }
+
+    &.active {
+        opacity: 1;
+    }
+
+    @media(max-width: 1200px) { 
+        &--tip {
+            max-width: 320px;
+        }
+    }
+
+    
     @media (max-width: 768px) {
-        padding: 35px 15px;
-        width: 340px;
+        &:not(.popup--tip) {
+            padding: 35px 15px;
+            width: 340px;
+        }
+
+        &--tip {
+            max-width: 290px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        &:not(.popup--tip) {
+            width: 100%;
+        }
     }
 }
 
+
 .overlay {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100vh;
     top: 0;
     left: 0;
     background: black;
-    opacity: 0.7;
+    transition: 0.5s;
+    opacity: 0;
+    animation: show-overlay 0.5s;
     z-index: 5;
+
+    &.active {
+        opacity: 0.7;
+    }
 }
+
+@keyframes show-popup {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes show-overlay {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+
+

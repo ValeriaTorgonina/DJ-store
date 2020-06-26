@@ -44,11 +44,48 @@ class Form {
 
 class Popup {
     constructor(
-        closeBtns = [...document.querySelectorAll('.cross-btn')]
+        closeBtns = [...document.querySelectorAll('.cross-btn')],
+        openBtns = [...document.querySelectorAll('.callback-btn')]
     ) {
         this.overlay = document.querySelector('.overlay');
         this.closeBtns = closeBtns;
+        this.openBtns = openBtns;
+        this.popups = document.querySelectorAll('.popup');
+        this.addHandlerForOpenBtns();
         this.addHandlersForCloseBtns();
+    }
+
+    addHandlerForOpenBtns() {
+        document.body.addEventListener('click', e => {
+            let target = e.target;
+            let currentTarget = e.currentTarget;
+            let isOpenBtn = false;
+            let btnName = null;
+
+            while(target !== currentTarget) {
+                if(this.openBtns.includes(target)) {                    
+                    e.stopImmediatePropagation();
+                    isOpenBtn = true;
+                    btnName = target.dataset.name;
+                    const popup = document.getElementById(btnName);
+                    if(popup) {
+                        return this.openPopup(popup);
+                    }else {
+                        return;
+                    }
+                }
+                target = target.parentElement;
+            }
+        })
+    }
+
+    openPopup(popup) {
+        popup.classList.add('active');
+        popup.hidden = false;
+        if(popup.getAttribute('id') === 'callback') {
+            this.overlay.classList.add('active');
+            this.overlay.hidden = false;
+        }
     }
 
     addHandlersForCloseBtns() {
@@ -63,15 +100,19 @@ class Popup {
                 if(isCloseBtn && target.classList.contains('popup')) {
                     return this.closePopup(target);
                 }
-
                 target = target.parentElement;
             }
+            this.popups.forEach(el => this.closePopup(el));
         })
     }
 
     closePopup(popup) {
-        popup.hidden = true;
-        this.overlay.hidden = true;
+        popup.classList.remove('active');
+        this.overlay.classList.remove('active');
+        setTimeout(() => {
+            popup.hidden = true;
+            this.overlay.hidden = true;
+        }, 500)
     }
 }
 
@@ -81,6 +122,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const popup = new Popup([
         ...document.querySelectorAll('.cross-btn'),
         form.formSuccess.querySelector('.blue-btn')
+    ],[
+        ...document.querySelectorAll('.callback-btn'),
+        ...document.querySelectorAll('.circle-btn')
     ]);
 
     const introSlider = new Swiper ('.intro-slider', {
@@ -90,6 +134,14 @@ document.addEventListener("DOMContentLoaded", function() {
             nextEl: '#intro-next',
             prevEl: '#intro-prev',
         },
-        // loop: true,
+    });
+
+    const imgSlider = new Swiper ('.img-slider', {
+        effect: 'fade',
+        speed: 700,
+        navigation: {
+            nextEl: '#intro-next',
+            prevEl: '#intro-prev',
+        },
     });
 });
