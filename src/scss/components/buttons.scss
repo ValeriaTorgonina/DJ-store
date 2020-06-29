@@ -7,11 +7,10 @@
     background: $blue;
     color: white;
     border-radius: 6px;
+    transition: 0.3s;
 
     &:hover {
-        @media (hover: hover), (pointer: fine) {
-            filter: brightness(0.9);
-        }
+        opacity: 0.7;
     }
 
     &:active {
@@ -25,8 +24,12 @@
 }
 
 .transparent-btn {
-    background: none;
+    background: rgba(255, 255, 255, 0);
     border: 1px solid white;
+    &:hover {
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.3);
+    }
 }
 
 .cross-btn {
@@ -55,11 +58,9 @@
     }
 
     &:hover {
-        @media (hover: hover), (pointer: fine) {
-            &:before,
-            &:after {
-                background: $blue;
-            }
+        &:before,
+        &:after {
+            background: $blue;
         }
     }
 
@@ -84,7 +85,7 @@
 
 .swiper-button-prev.prev-btn,
 .swiper-button-next.next-btn {
-    position: static;
+    position: relative;
     display: inline-block;
     width: 30px;
     height: 30px;
@@ -94,23 +95,37 @@
     border-radius: 50%;
     opacity: 1;
 
-    &:before,
     &:after {
-        margin-left: 3px;
-        font-size: medium;
+        content: "";
+        position: absolute;
+        display: block;
+        width: 11px;
+        height: 11px;
+        top: 50%;
+        left: 6px;
+        transform: translate(0%, -50%) rotate(45deg);
+        border-right: 1px solid white;
+        border-top: 1px solid white;
     }
 
     &.swiper-button-disabled {
         background: rgba(186, 209, 255, 0.3);
     }
+
+    @media(max-width: 768px) {
+        margin-bottom: 30px;
+
+        &.swiper-button-disabled {
+            background: rgba(186, 209, 255, 1);
+        }
+    }
 }
 
 .swiper-button-prev.prev-btn {
-    &:before,
+
     &:after {
-        margin: 0;
-        margin-right: 3px;
-        font-size: medium;
+        left: 11px;
+        transform: translate(0%, -50%) rotate(-135deg);
     }
 }
 

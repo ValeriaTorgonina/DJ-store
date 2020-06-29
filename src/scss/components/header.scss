@@ -40,9 +40,7 @@
         }
         
         &:hover {
-            @media (hover: hover), (pointer: fine) {
-                stroke: $blue;
-            }
+            stroke: $blue;
         }
 
         &:active {

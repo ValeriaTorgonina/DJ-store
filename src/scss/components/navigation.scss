@@ -21,11 +21,10 @@
         display: block;
         width: 100%;
         color: $gray;
+        white-space: nowrap;
 
         &:hover {
-            @media (hover: hover), (pointer: fine) {
-                color: $black;
-            }
+            color: $black;
         }
 
         &:active {
@@ -123,16 +122,12 @@
             }
 
             &:hover {
-                @media (hover: hover), (pointer: fine) {
-                    color: $blue;
-                }
+                color: $blue;
             }
 
             &:hover + .main-nav__icon {
-                @media (hover: hover), (pointer: fine) {
-                    stroke: $blue;
-                    fill: $blue;
-                }
+                stroke: $blue;
+                fill: $blue;
             }
         }
 

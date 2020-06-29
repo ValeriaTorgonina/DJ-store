@@ -4,12 +4,15 @@
     overflow: hidden;
     background: $lightblue;
 
-    &__content {
+    .container {
         position: relative;
         display: flex;
         flex-direction: column;
         justify-content: center;
         height: 100vh;
+    }
+
+    &__content {
         max-width: 600px;
         color: white;
         z-index: 2;
@@ -42,8 +45,16 @@
     }
 
     @media(max-width: 1200px) {
+        height: auto;
         background: $lightblue url('../../assets/img/intro-bg.jpg') 50% 50% no-repeat;
         background-size: cover;
+        .container {
+            display: block;
+            height: auto;
+            margin-top: 120px;
+            margin-bottom: 50px;
+            z-index: 1;
+        }
     }
 
     @media(max-width: 768px) {
@@ -68,7 +79,6 @@
     }
 
     @media(max-width: 480px) {
-        padding-top: 40px;
         
         &__text {
             margin-bottom: 30px;

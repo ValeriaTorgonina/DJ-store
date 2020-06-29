@@ -55,9 +55,7 @@
         color: $blue;
 
         &:hover {
-            @media (hover: hover), (pointer: fine) {
-                text-decoration: underline;
-            }
+            text-decoration: underline;
         }
     
         &:active {

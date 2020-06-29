@@ -11,10 +11,14 @@
   "author": "Torgonina Valeria",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
     "autoprefixer": "^9.6.1",
     "browser-sync": "^2.26.7",
     "del": "^5.0.0",
     "gulp": "^3.9.1",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
     "gulp-csso": "^3.0.1",
     "gulp-imagemin": "^6.0.0",
     "gulp-minify": "^3.1.0",
@@ -30,6 +34,8 @@
     "run-sequence": "^2.2.1"
   },
   "dependencies": {
-    "normalize-scss": "^7.0.1"
+    "normalize-scss": "^7.0.1",
+    "polyfill-array-includes": "^2.0.0",
+    "svgxuse": "^1.2.6"
   }
 }

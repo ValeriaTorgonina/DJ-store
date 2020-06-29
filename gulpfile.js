@@ -14,6 +14,8 @@ const posthtml = require("gulp-posthtml");
 const include = require("posthtml-include");
 const del = require("del");
 const run = require("run-sequence");
+const babel = require("gulp-babel");
+const concat = require("gulp-concat");
 
 gulp.task("clean", () => del("build"));
 
@@ -52,12 +54,24 @@ gulp.task("html", () =>
 );
 
 gulp.task("js", () => {
-  gulp.src("src/js/main.js").pipe(minifyJs()).pipe(gulp.dest("build/js"));
+  gulp
+    .src([
+      "node_modules/polyfill-array-includes/index.js",
+      "src/js/**/*.js"
+    ])
+    .pipe(
+      babel({
+        presets: ["@babel/env"],
+      })
+    )
+    .pipe(concat("main.js"))
+    .pipe(minifyJs())
+    .pipe(gulp.dest("build/js"));
 });
 
 gulp.task("copy", () =>
   gulp
-    .src(["src/assets/**", "src/js/**"], {
+    .src(["src/assets/**"], {
       base: "src",
     })
     .pipe(gulp.dest("build"))
@@ -86,7 +100,7 @@ gulp.task("serve", ["style"], () => {
 
   gulp.watch("src/scss/**/*.scss", ["style"]).on("change", server.reload);
   gulp.watch("src/*.html", ["html"]).on("change", server.reload);
-  gulp.watch("src/js/**/*.*", ["copy"]).on("change", server.reload);
+  gulp.watch("src/js/**/*.*", ["js"]).on("change", server.reload);
   gulp.watch("src/assets/**/*.*", ["copy"]).on("change", server.reload);
 });
 

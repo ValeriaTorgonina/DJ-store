@@ -14,10 +14,12 @@ class Header {
             this.headerMenu.classList.toggle('open');
             if(this.headerMenu.classList.contains('open')) {
                 this.menuIcon.style.display = "none";
-                this.crossIcon.style.display = "block";
+                this.crossIcon.style.display = "block";                
+                document.body.style = "overflow: hidden";
             }else {
                 this.crossIcon.style.display = "none";
                 this.menuIcon.style.display = "block";
+                document.body.style = "overflow: auto";
             }
         }
     }
@@ -44,13 +46,13 @@ class Form {
 
 class Popup {
     constructor(
-        closeBtns = [...document.querySelectorAll('.cross-btn')],
-        openBtns = [...document.querySelectorAll('.callback-btn')]
+        closeBtns = [...HTMLUtils.nodeListToArray(document.querySelectorAll('.cross-btn'))],
+        openBtns = [...HTMLUtils.nodeListToArray(document.querySelectorAll('.callback-btn'))]
     ) {
         this.overlay = document.querySelector('.overlay');
         this.closeBtns = closeBtns;
         this.openBtns = openBtns;
-        this.popups = document.querySelectorAll('.popup');
+        this.popups = [...HTMLUtils.nodeListToArray(document.querySelectorAll('.popup'))];
         this.addHandlerForOpenBtns();
         this.addHandlersForCloseBtns();
     }
@@ -93,16 +95,22 @@ class Popup {
             let target = e.target;
             let currentTarget = e.currentTarget;
             let isCloseBtn = false;
+            let isPopup = false;
             while(target !== currentTarget) {
                 if(this.closeBtns.includes(target)) {
                     isCloseBtn = true;
                 }
-                if(isCloseBtn && target.classList.contains('popup')) {
+                if(target.classList.contains('popup')) {
+                    isPopup = true;
+                }
+                if(isCloseBtn && isPopup) {
                     return this.closePopup(target);
                 }
                 target = target.parentElement;
             }
-            this.popups.forEach(el => this.closePopup(el));
+            if(!isPopup) {
+                this.popups.forEach(el => this.closePopup(el));
+            }
         })
     }
 
@@ -116,24 +124,37 @@ class Popup {
     }
 }
 
+class HTMLUtils {
+    static nodeListToArray(elems) {
+        return Array.prototype.map.call(elems, e => e)
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     const header = new Header();
     const form = new Form();
     const popup = new Popup([
-        ...document.querySelectorAll('.cross-btn'),
+        ...HTMLUtils.nodeListToArray(document.querySelectorAll('.cross-btn')),
         form.formSuccess.querySelector('.blue-btn')
     ],[
-        ...document.querySelectorAll('.callback-btn'),
-        ...document.querySelectorAll('.circle-btn')
+        ...HTMLUtils.nodeListToArray(document.querySelectorAll('.callback-btn')),
+        ...HTMLUtils.nodeListToArray(document.querySelectorAll('.circle-btn'))
     ]);
 
     const introSlider = new Swiper ('.intro-slider', {
-        slidesPerView: 2,
         speed: 500,
         navigation: {
             nextEl: '#intro-next',
             prevEl: '#intro-prev',
         },
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 2,
+            }
+        }
     });
 
     const imgSlider = new Swiper ('.img-slider', {

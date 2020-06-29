@@ -13,6 +13,28 @@ ul {
     padding: 0;
 }
 
+li:not(.main-nav__item) {
+    position: relative;
+    margin-left: 25px;
+    padding: 5px;
+    font-weight: 400;
+    font-size: 12px;
+
+    &:before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 6px;
+        height: 6px;
+        top: 50%;
+        left: -8px;
+        transform: translate(-100%, -50%);
+        background: $blue;
+        border: 5px solid $lightblue;
+        border-radius: 50%;
+    }
+}
+
 a {
     text-decoration: none;
 }
