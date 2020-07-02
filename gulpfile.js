@@ -57,6 +57,7 @@ gulp.task("js", () => {
   gulp
     .src([
       "node_modules/polyfill-array-includes/index.js",
+      "node_modules/fetch-polyfill/fetch.js",
       "src/js/**/*.js"
     ])
     .pipe(

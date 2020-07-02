@@ -34,8 +34,9 @@
     "run-sequence": "^2.2.1"
   },
   "dependencies": {
+    "es6-promise": "^4.2.8",
+    "fetch-polyfill": "^0.8.2",
     "normalize-scss": "^7.0.1",
-    "polyfill-array-includes": "^2.0.0",
-    "svgxuse": "^1.2.6"
+    "polyfill-array-includes": "^2.0.0"
   }
 }

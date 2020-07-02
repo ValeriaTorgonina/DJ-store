@@ -19,7 +19,10 @@
     font-size: 14px;
 
     &__input {
-        display: none;
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        opacity: 0;
     }
     
     &__checkmark {

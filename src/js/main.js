@@ -14,12 +14,12 @@ class Header {
             this.headerMenu.classList.toggle('open');
             if(this.headerMenu.classList.contains('open')) {
                 this.menuIcon.style.display = "none";
-                this.crossIcon.style.display = "block";                
-                document.body.style = "overflow: hidden";
+                this.crossIcon.style.display = "block";
+                document.body.style.overflow = "hidden";
             }else {
                 this.crossIcon.style.display = "none";
                 this.menuIcon.style.display = "block";
-                document.body.style = "overflow: auto";
+                document.body.style.overflow = "auto";
             }
         }
     }
@@ -31,15 +31,59 @@ class Form {
         formSuccess = document.querySelector('.form-success')
     ) {
         this.form = form;
+        this.loader = form.querySelector('.loader');
+        this.nameInput = form.querySelector('.input--name');
+        this.telInput = form.querySelector('.input--tel');
         this.formSuccess = formSuccess;
+        this.requestManager = new RequestManager();
+
         this.addHandlersForForm();
     }
 
     addHandlersForForm() {
         this.form.addEventListener('submit', e => {
             e.preventDefault();
-            this.form.hidden = true;
-            this.formSuccess.hidden = false;
+            this.postFormData();
+        })
+    }
+    postFormData() {
+        const formData = this.getFormValues();
+        this.loader.classList.add('onload');
+        this.requestManager.postRequest(formData)
+        .then(() => this.openSuccessForm())
+        .catch(() => {
+            this.loader.classList.remove('onload');
+        });
+    }
+
+    openSuccessForm() {
+        this.form.hidden = true;
+        this.loader.classList.remove('onload');
+        this.formSuccess.hidden = false;
+    }
+
+    getFormValues() {
+        const name = this.nameInput.value;
+        const phone = this.telInput.value;
+        const formData = {
+            name,
+            phone
+        }
+        return JSON.stringify(formData);
+    }
+}
+
+class RequestManager {
+    postRequest(body) {
+        return fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            body: body
+        })
+        .then(response => console.log(response.status))
+        .catch(error => {
+            console.warn(error);
+            alert(`произошла ошибка ${error.status}`);
+            throw error.status
         })
     }
 }
@@ -154,15 +198,29 @@ document.addEventListener("DOMContentLoaded", function() {
             768: {
                 slidesPerView: 2,
             }
+        },
+        on: {
+            slideChange: () => {
+                imgSlider.slideTo(introSlider.realIndex);
+            },
         }
     });
 
     const imgSlider = new Swiper ('.img-slider', {
         effect: 'fade',
         speed: 700,
-        navigation: {
-            nextEl: '#intro-next',
-            prevEl: '#intro-prev',
-        },
+        on: {
+            slideChange: () => {
+                introSlider.slideTo(imgSlider.realIndex);
+            },
+        }
     });
+
+    const telInputs = document.getElementsByClassName('input--tel');
+    for (var i = 0; i < telInputs.length; i++) {
+        new IMask(telInputs[i], {
+            mask: '{+7}(000)000-00-00',
+            min: 15,
+        });
+    };
 });

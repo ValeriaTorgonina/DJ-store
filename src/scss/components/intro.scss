@@ -11,7 +11,7 @@
         justify-content: center;
         height: 100vh;
     }
-
+ 
     &__content {
         max-width: 600px;
         color: white;
@@ -45,7 +45,7 @@
     }
 
     @media(max-width: 1200px) {
-        height: auto;
+        height: 780px;
         background: $lightblue url('../../assets/img/intro-bg.jpg') 50% 50% no-repeat;
         background-size: cover;
         .container {
@@ -58,6 +58,7 @@
     }
 
     @media(max-width: 768px) {
+        height: auto;
         &__desc {
             font-size: 14px;
         }
